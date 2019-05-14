@@ -30,6 +30,11 @@ namespace HomeFromRuszGlowa
             description.Text = currentLocation.Desciption;
         }
 
+        private void GoThroughTheDoor_Click(object sender, EventArgs e)
+        {
+            MoveToANewLocation(currentLocation.Exits[exits.SelectedIndex]);
+        }
+
         private void CreateObjects()
         {
             livingRoom = new RoomWithDoor("salon", "antyczny dywan", "dębowe drzwi z klamką");
@@ -57,7 +62,7 @@ namespace HomeFromRuszGlowa
             this.currentLocation = currentLocation;
             exits.Items.Clear();
             exits.Items.Add(this.exits);
-            exits.SelectedText = 0;
+            exits.SelectedText = "";
         }
     }
 }

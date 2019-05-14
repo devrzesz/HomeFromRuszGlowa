@@ -69,6 +69,8 @@
             this.goThroughTheDoor.TabIndex = 3;
             this.goThroughTheDoor.Text = "Przejdz przez drzwi";
             this.goThroughTheDoor.UseVisualStyleBackColor = true;
+            this.goThroughTheDoor.Visible = false;
+            this.goThroughTheDoor.Click += new System.EventHandler(this.GoThroughTheDoor_Click);
             // 
             // Form1
             // 
