@@ -9,6 +9,7 @@ namespace HomeFromRuszGlowa
     class Room : Location
     {
         private string decoration;
+
         public Room(string name, string decoration) : base(name)
         {
             this.decoration = decoration;
@@ -18,7 +19,7 @@ namespace HomeFromRuszGlowa
         {
             get
             {
-                return base.Desciption + "Widzisz tutaj dekoracje: " + decoration;
+                return base.Desciption + "Widzisz tutaj dekoracje: " + decoration + ".";
             }
         }
     }

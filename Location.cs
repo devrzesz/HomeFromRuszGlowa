@@ -19,12 +19,12 @@ namespace HomeFromRuszGlowa
         {
             get
             {
-                string descritpion = "Stoisz w: " + Name + ". Widzisz wyjscia do nastepujacych lokalizacji: ";
+                string descritpion = "Stoisz w: " + Name + ".\r\nWidzisz wyjscia do nastepujacych lokalizacji: ";
                 foreach (var item in Exits)
                 {
                     descritpion += $"{item.Name}, ";
                 }
-                return descritpion += ".";
+                return descritpion += "\r\n";
             }
         }
     }

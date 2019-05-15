@@ -25,7 +25,7 @@ namespace HomeFromRuszGlowa
             {
                 string description = base.Desciption;
                 if (hot)
-                    return description += "Tu jest bardzo gorąco";
+                    return description += "Tu jest bardzo gorąco.";
                 return description;
             }
         }

@@ -15,6 +15,9 @@ namespace HomeFromRuszGlowa
 
         public string DoorDescription { get; }
 
-        public Location DoorLocation => throw new NotImplementedException();
+        public override string Desciption => base.Desciption + "\r\nNo i są tu drzwi: " + DoorDescription + ".";
+
+        public Location DoorLocation { get; set; }
+
     }
 }

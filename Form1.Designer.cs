@@ -36,10 +36,12 @@
             // 
             // description
             // 
-            this.description.Location = new System.Drawing.Point(12, 12);
+            this.description.AcceptsReturn = true;
+            this.description.Location = new System.Drawing.Point(16, 15);
+            this.description.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.description.Multiline = true;
             this.description.Name = "description";
-            this.description.Size = new System.Drawing.Size(498, 267);
+            this.description.Size = new System.Drawing.Size(663, 328);
             this.description.TabIndex = 0;
             this.description.TextChanged += new System.EventHandler(this.Description_TextChanged);
             // 
@@ -47,25 +49,29 @@
             // 
             this.exits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.exits.FormattingEnabled = true;
-            this.exits.Location = new System.Drawing.Point(170, 295);
+            this.exits.Location = new System.Drawing.Point(227, 363);
+            this.exits.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.exits.Name = "exits";
-            this.exits.Size = new System.Drawing.Size(340, 21);
+            this.exits.Size = new System.Drawing.Size(452, 24);
             this.exits.TabIndex = 1;
             // 
             // goHere
             // 
-            this.goHere.Location = new System.Drawing.Point(12, 295);
+            this.goHere.Location = new System.Drawing.Point(16, 363);
+            this.goHere.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.goHere.Name = "goHere";
-            this.goHere.Size = new System.Drawing.Size(152, 23);
+            this.goHere.Size = new System.Drawing.Size(203, 28);
             this.goHere.TabIndex = 2;
             this.goHere.Text = "Idz tutaj";
             this.goHere.UseVisualStyleBackColor = true;
+            this.goHere.Click += new System.EventHandler(this.goHere_Click);
             // 
             // goThroughTheDoor
             // 
-            this.goThroughTheDoor.Location = new System.Drawing.Point(12, 341);
+            this.goThroughTheDoor.Location = new System.Drawing.Point(16, 420);
+            this.goThroughTheDoor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.goThroughTheDoor.Name = "goThroughTheDoor";
-            this.goThroughTheDoor.Size = new System.Drawing.Size(498, 23);
+            this.goThroughTheDoor.Size = new System.Drawing.Size(664, 28);
             this.goThroughTheDoor.TabIndex = 3;
             this.goThroughTheDoor.Text = "Przejdz przez drzwi";
             this.goThroughTheDoor.UseVisualStyleBackColor = true;
@@ -74,13 +80,14 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 380);
+            this.ClientSize = new System.Drawing.Size(699, 468);
             this.Controls.Add(this.goThroughTheDoor);
             this.Controls.Add(this.goHere);
             this.Controls.Add(this.exits);
             this.Controls.Add(this.description);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

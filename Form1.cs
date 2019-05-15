@@ -12,17 +12,20 @@ namespace HomeFromRuszGlowa
 {
     public partial class Form1 : Form
     {
-        //deklaracja zmiennych referencyjnych
+        Location currentLocation;
+
         Room diningRoom;
         RoomWithDoor livingRoom, kitchen;
+
         Outside garden;
         OutsideWithDoor frontYard, backYard;
-        Location currentLocation;
 
         public Form1()
         {
             InitializeComponent();
             CreateObjects();
+            currentLocation = diningRoom; // od czegos trzeba zaczac ;]
+            MoveToANewLocation(currentLocation);
         }
 
         private void Description_TextChanged(object sender, EventArgs e)
@@ -30,39 +33,63 @@ namespace HomeFromRuszGlowa
             description.Text = currentLocation.Desciption;
         }
 
+
+
         private void GoThroughTheDoor_Click(object sender, EventArgs e)
         {
+            IHasExteriorDoor hasDoor = currentLocation as IHasExteriorDoor;
+            MoveToANewLocation(hasDoor.DoorLocation);
+
+        }
+
+        private void goHere_Click(object sender, EventArgs e)
+        {
             MoveToANewLocation(currentLocation.Exits[exits.SelectedIndex]);
+
         }
 
         private void CreateObjects()
         {
-            livingRoom = new RoomWithDoor("salon", "antyczny dywan", "dębowe drzwi z klamką");
+            livingRoom = new RoomWithDoor("Salon", "Antyczny dywan", "Dębowe drzwi z klamką");
+            diningRoom = new Room("Jadalnia", "Kryształowy żyrandol");
+            kitchen = new RoomWithDoor("Kuchnia", "Nierdzewne stalowe sztudźce", "Rozsuwne drzwi");
+
+            backYard = new OutsideWithDoor(true, "Podworko za domem", "Rozsuwne drzwi");
+            frontYard = new OutsideWithDoor(false, "Podwroko przed domem", "Dębowe drzwi z klamką");
+            garden = new Outside(false, "Ogród");
+
             livingRoom.Exits = new Location[] { frontYard, diningRoom };
-
-            diningRoom = new Room("Jadalnia", "dekoracja jadalni");
             diningRoom.Exits = new Location[] { kitchen, livingRoom };
-
-            kitchen = new RoomWithDoor("Kuchnia", "dekoracje kuchni", "kolejne kuchenne drzwi");
             kitchen.Exits = new Location[] { diningRoom, backYard };
-
-            backYard = new OutsideWithDoor(true, "Podworko z tyłu", "jakas klamka");
             backYard.Exits = new Location[] { kitchen, garden };
-
-            garden = new Outside(true, "Ogród");
             garden.Exits = new Location[] { backYard, frontYard };
-
-            frontYard = new OutsideWithDoor(false, "Podwroko z przodu", "opis drzwi");
             frontYard.Exits = new Location[] { garden, livingRoom };
 
+            livingRoom.DoorLocation = frontYard;
+            frontYard.DoorLocation = livingRoom;
+
+            kitchen.DoorLocation = backYard;
+            backYard.DoorLocation = kitchen;
+
         }
 
-        private void MoveToANewLocation(Location currentLocation)
+        private void MoveToANewLocation(Location newLocation)
         {
-            this.currentLocation = currentLocation;
+            currentLocation = newLocation;
+
             exits.Items.Clear();
-            exits.Items.Add(this.exits);
-            exits.SelectedText = "";
-        }
+
+            for (int i = 0; i < currentLocation.Exits.Length; i++)
+                exits.Items.Add(currentLocation.Exits[i].Name);
+            exits.SelectedIndex = 0;
+
+            description.Text = currentLocation.Desciption;
+
+            if (currentLocation is IHasExteriorDoor)
+                goThroughTheDoor.Visible = true;
+            else
+                goThroughTheDoor.Visible = false;
+
+        }   
     }
 }
